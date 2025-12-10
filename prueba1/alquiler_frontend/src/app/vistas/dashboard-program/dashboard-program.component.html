@@ -1,0 +1,144 @@
+<div class="container mt-4">
+  <div class="d-flex align-items-center mb-3">
+    <i class="bi bi-speedometer2 me-2" style="font-size: 1.5rem;"></i>
+    <h1>Dashboard</h1>
+  </div>
+  <p>Visión general de tu negocio de alquiler de vehículos.</p>
+
+  <div class="mb-4">
+    <button class="btn btn-primary" routerLink="vehiculos">
+      <i class="bi bi-car-front-fill me-2"></i>Gestionar Vehículos
+    </button>
+  </div>
+
+  <!-- Tarjetas de resumen -->
+  <div class="row g-3 mb-4">
+    <div class="col-md-3">
+      <div class="card bg-primary text-white">
+        <div class="card-body">
+          <h6 class="card-title">Alquileres Hoy</h6>
+          <h2>5</h2>
+          <small>+2 vs ayer</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-success text-white">
+        <div class="card-body">
+          <h6 class="card-title">Vehículos Disponibles</h6>
+          <h2>12</h2>
+          <small>de 20 totales</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-info text-white">
+        <div class="card-body">
+          <h6 class="card-title">Ingresos Hoy</h6>
+          <h2>S/ 1,250</h2>
+          <small>+15% vs semana pasada</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-warning text-dark">
+        <div class="card-body">
+          <h6 class="card-title">Vehículos en Mantenimiento</h6>
+          <h2>3</h2>
+          <small>Revisar agenda</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección: Resumen de Alquileres (gráfico) -->
+  <div class="row g-3 mb-4">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          Resumen de Alquileres (Últimos 7 días)
+        </div>
+        <div class="card-body">
+          <div class="text-center p-5">
+            <i class="bi bi-bar-chart-line me-2"></i>
+            Gráfico de alquileres (requiere librería como Chart.js)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección: Próximas Devoluciones -->
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-header">
+          Próximas Devoluciones
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Toyota Corolla (ABC-123)</div>
+                Juan Pérez • 15/10/2025 14:30
+              </div>
+              <span class="badge bg-primary rounded-pill">Hoy</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Honda Civic (XYZ-789)</div>
+                María López • 18/10/2025 10:00
+              </div>
+              <span class="badge bg-secondary rounded-pill">+3 días</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Ford Focus (DEF-456)</div>
+                Carlos Ruiz • 20/10/2025 16:00
+              </div>
+              <span class="badge bg-secondary rounded-pill">+5 días</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección: Últimos Alquileres Registrados -->
+  <div class="card mb-4">
+    <div class="card-header">
+      Últimos Alquileres Registrados
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Cliente</th>
+              <th>Vehículo</th>
+              <th>Inicio</th>
+              <th>Fin</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let alquiler of alquileresRecientes">
+              <td>{{ alquiler.id }}</td>
+              <td>{{ alquiler.cliente }}</td>
+              <td>{{ alquiler.vehiculo }}</td>
+              <td>{{ alquiler.inicio | date:'shortDate' }}</td>
+              <td>{{ alquiler.fin | date:'shortDate' }}</td>
+              <td>
+                <span [ngClass]="{
+                  'badge bg-success': alquiler.estado === 'Completado',
+                  'badge bg-primary': alquiler.estado === 'En Curso'
+                }">
+                  {{ alquiler.estado }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
