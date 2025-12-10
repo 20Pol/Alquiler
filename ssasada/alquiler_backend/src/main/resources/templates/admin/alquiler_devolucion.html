@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devolución de Vehículo - RentDrive</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">RentDrive</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="alquileres.html">Alquileres</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pagos.html">Pagos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="devoluciones.html">Devoluciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="alquiler-form.html">Nuevo Alquiler</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2><i class="fas fa-car-alt me-2"></i> Devolución de Vehículo</h2>
+        <p class="text-muted">Registra la devolución de un vehículo alquilado.</p>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <form id="form-devolucion">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="id_alquiler" class="form-label">ID del Alquiler</label>
+                            <input type="number" class="form-control" id="id_alquiler" placeholder="Ingrese ID del alquiler" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fecha_fin_real" class="form-label">Fecha y Hora de Devolución</label>
+                            <input type="datetime-local" class="form-control" id="fecha_fin_real" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="kilometraje_fin" class="form-label">Kilometraje Final</label>
+                            <input type="number" class="form-control" id="kilometraje_fin" placeholder="Kilómetros recorridos" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="costo_total" class="form-label">Costo Total (S/.)</label>
+                            <input type="number" step="0.01" class="form-control" id="costo_total" placeholder="Total a cobrar" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descripcion_dano" class="form-label">Daños Reportados (Opcional)</label>
+                        <textarea class="form-control" id="descripcion_dano" rows="3" placeholder="Describa cualquier daño observado..."></textarea>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check-circle me-2"></i> Registrar Devolución
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h5><i class="fas fa-history me-2"></i> Historial Reciente de Devoluciones</h5>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID Alquiler</th>
+                            <th>Cliente</th>
+                            <th>Vehículo</th>
+                            <th>Fecha Devolución</th>
+                            <th>Km Final</th>
+                            <th>Costo Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1001</td>
+                            <td>Juan Pérez</td>
+                            <td>ABC-123 - Toyota Corolla</td>
+                            <td>15/10/2025 14:30</td>
+                            <td>12,500</td>
+                            <td>S/ 450.00</td>
+                            <td><button class="btn btn-sm btn-info">Ver Detalle</button></td>
+                        </tr>
+                        <tr>
+                            <td>#1002</td>
+                            <td>María López</td>
+                            <td>XYZ-789 - Honda Civic</td>
+                            <td>14/10/2025 18:15</td>
+                            <td>8,200</td>
+                            <td>S/ 320.00</td>
+                            <td><button class="btn btn-sm btn-info">Ver Detalle</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

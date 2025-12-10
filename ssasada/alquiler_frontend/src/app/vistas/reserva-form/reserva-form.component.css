@@ -1,0 +1,31 @@
+
+body {
+    background: radial-gradient(circle at 20% 20%, rgba(7, 97, 170, 0.35), transparent 60%),
+              radial-gradient(circle at 80% 60%, rgba(5, 49, 114, 0.3), transparent 55%),
+              #00040a;
+  backdrop-filter: blur(6px);
+    opacity: 0.95;
+    padding-top: 80px;
+}
+
+.reserva-card {
+  max-width: 600px;
+  border-radius: 12px;
+}
+
+.card-header {
+  font-weight: 600;
+}
+
+.btn {
+  border-radius: 20px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn:hover { 
+  transform: scale(1.05);
+}
+
+footer {
+  width: 100%;
+}

@@ -1,0 +1,92 @@
+<div class="container mt-4">
+  <div class="d-flex align-items-center mb-3">
+    <i class="bi bi-credit-card me-2" style="font-size: 1.5rem;"></i>
+    <h1>Gestión de Pagos</h1>
+  </div>
+  <p>Registra y gestiona los pagos de los alquileres.</p>
+
+  <!-- Formulario: Registrar Nuevo Pago -->
+  <div class="card p-4 mb-4">
+    <h5><i class="bi bi-plus-square me-2"></i>Registrar Nuevo Pago</h5>
+    <form>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="comprobanteId" class="form-label">ID Comprobante</label>
+          <input type="text" class="form-control" id="comprobanteId" placeholder="Ingrese ID del comprobante">
+        </div>
+        <div class="col-md-6">
+          <label for="monto" class="form-label">Monto (S/.)</label>
+          <input type="number" class="form-control" id="monto" placeholder="Cantidad a pagar">
+        </div>
+      </div>
+      <div class="row g-3 mt-3">
+        <div class="col-md-6">
+          <label for="metodoPago" class="form-label">Método de Pago</label>
+          <select class="form-select" id="metodoPago">
+            <option value="">Seleccionar...</option>
+            <option value="efectivo">Efectivo</option>
+            <option value="tarjeta">Tarjeta</option>
+            <option value="transferencia">Transferencia</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="referencia" class="form-label">Referencia (Opcional)</label>
+          <input type="text" class="form-control" id="referencia" placeholder="Número de transacción, voucher, etc.">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success w-100 mt-4">
+        <i class="bi bi-check-circle me-2"></i>Registrar Pago
+      </button>
+    </form>
+  </div>
+
+  <!-- Historial de Pagos -->
+  <h5><i class="bi bi-clock-history me-2"></i>Historial de Pagos</h5>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>ID Pago</th>
+          <th>Comprobante</th>
+          <th>Cliente</th>
+          <th>Monto</th>
+          <th>Método</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pago of pagos">
+          <td>{{ pago.id }}</td>
+          <td>{{ pago.comprobante }}</td>
+          <td>{{ pago.cliente }}</td>
+          <td>S/ {{ pago.monto }}</td>
+          <td>
+            <span [ngClass]="{
+              'badge bg-success': pago.metodo === 'efectivo',
+              'badge bg-primary': pago.metodo === 'tarjeta',
+              'badge bg-warning': pago.metodo === 'transferencia'
+            }">
+              {{ pago.metodo | titlecase }}
+            </span>
+          </td>
+          <td>{{ pago.fecha | date:'short' }}</td>
+          <td>
+            <span [ngClass]="{
+              'badge bg-success': pago.estado === 'Completado',
+              'badge bg-warning': pago.estado === 'Pendiente'
+            }">
+              {{ pago.estado }}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-info btn-sm">
+              <i class="bi bi-printer"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

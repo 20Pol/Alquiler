@@ -1,0 +1,31 @@
+body {
+    background-color: #d05d2b;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+    margin-top: 3rem;
+    background-color: #f2330d;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary {
+    background-color: #fca311;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #ffb703;
+}
+
+.table thead {
+    background-color: #fca311;
+    color: #000;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

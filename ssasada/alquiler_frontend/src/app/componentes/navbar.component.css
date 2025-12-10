@@ -1,0 +1,22 @@
+/* === NAVBAR === */
+.navbar {
+  background: rgba(0, 0, 0, 0.6) !important;
+  padding: 1rem 1.6rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  backdrop-filter: blur(6px);
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  top: 0;
+}
+
+/* Navbar links */
+.nav-link {
+  color: #dcdcdc !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #004c9c !important;
+}

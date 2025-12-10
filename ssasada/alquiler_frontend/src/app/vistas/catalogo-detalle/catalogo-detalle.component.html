@@ -1,0 +1,154 @@
+<body>
+
+<app-navbar></app-navbar>
+
+<div class="container mt-5 pt-4">
+
+  <!-- BOTÓN VOLVER -->
+  <button class="btn btn-secondary mb-3" routerLink="/catalogo">
+    <i class="fa-solid fa-arrow-left"></i> Volver
+  </button>
+
+  <!-- LOADING -->
+  <div *ngIf="loading" class="text-center mt-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <!-- ERROR -->
+  <div *ngIf="error" class="alert alert-danger text-center mt-5">
+    {{ error }}
+    <br>
+    <a routerLink="/catalogo" class="btn btn-outline-danger mt-3">Volver al Catálogo</a>
+  </div>
+
+  <!-- CARD DE DETALLES -->
+  <div *ngIf="vehiculo && !loading" class="card shadow-lg p-4">
+
+    <h2 class="mb-4 text-center">Detalles del Vehículo</h2>
+
+    <div class="row">
+
+      <!-- IMAGEN -->
+      <div class="col-md-5 text-center">
+        <img 
+          [src]="vehiculo.imagenUrl || 'https://via.placeholder.com/600x400?text=Sin+Imagen'"
+          alt="Vehículo" 
+          class="img-fluid rounded border shadow-sm"
+          style="max-height: 300px; object-fit: cover;"
+        >
+      </div>
+
+      <!-- INFORMACIÓN -->
+      <div class="col-md-7">
+
+        <ul class="list-group list-group-flush fs-5">
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-car-side text-primary"></i>
+            <strong> Marca:</strong> {{ vehiculo.marca }}
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-tag text-primary"></i>
+            <strong> Modelo:</strong> {{ vehiculo.modelo }}
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-calendar text-primary"></i>
+            <strong> Año:</strong> {{ vehiculo.anio }}
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-dollar-sign text-primary"></i>
+            <strong> Precio diario:</strong> S/ {{ vehiculo.precioDiario }}
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-users text-primary"></i>
+            <strong> Asientos:</strong> {{ vehiculo.asientos }}
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-car text-primary"></i>
+            <strong> Tipo vehículo:</strong> {{ vehiculo.tipoVehiculo }}
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-gears text-primary"></i>
+            <strong> Transmisión:</strong> {{ vehiculo.transmision }}
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-gas-pump text-primary"></i>
+            <strong> Combustible:</strong> {{ vehiculo.combustible }}
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-traffic-light text-primary"></i>
+            <strong> Estado:</strong> 
+            <span class="badge"
+              [ngClass]="{
+                'bg-success': vehiculo.estado === 'DISPONIBLE',
+                'bg-danger': vehiculo.estado !== 'DISPONIBLE'
+              }">
+              {{ vehiculo.estado }}
+            </span>
+          </li>
+
+        </ul>
+
+        <!-- BOTÓN RESERVA -->
+        <button 
+          class="btn btn-success mt-3 w-100"
+          [disabled]="vehiculo.estado !== 'DISPONIBLE'"
+          [routerLink]="['/reserva', vehiculo.idVehiculo]">
+          <i class="fa-solid fa-calendar-check"></i> 
+          {{ vehiculo.estado === 'DISPONIBLE' ? 'Hacer Reserva' : 'No Disponible' }}
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <!-- SIMILARES -->
+  <h4 class="text-white mb-3">
+    <i class="fa-solid fa-award me-2"></i> Vehículos similares
+  </h4>
+
+  <div class="row">
+
+    <div class="col-md-3" *ngFor="let v of similares">
+      <div class="card shadow-sm similar-card mb-4">
+
+        <img 
+          [src]="v.imagenUrl" 
+          class="card-img-top">
+
+        <div class="card-body">
+          <h5 class="card-title">{{ v.marca }} {{ v.modelo }}</h5>
+          <p class="card-text">S/ {{ v.precioDiario }} por día</p>
+
+          <button 
+            class="btn btn-primary btn-sm w-100"
+            [routerLink]="['/catalogo', v.idVehiculo]">
+            Ver detalles
+          </button>
+        </div>
+
+      </div>
+    </div>
+ 
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+  <p class="mb-0">&copy; 2025 RentDrive. Todos los derechos reservados.</p>
+</footer>
+
+</body>

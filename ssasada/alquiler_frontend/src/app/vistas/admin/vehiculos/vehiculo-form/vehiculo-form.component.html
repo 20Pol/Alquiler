@@ -1,0 +1,105 @@
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h3>Registrar Nuevo Vehículo</h3>
+    </div>
+    <div class="card-body">
+
+      <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ successMessage }}
+        <button type="button" class="btn-close" (click)="successMessage = ''"></button>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ errorMessage }}
+        <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+      </div>
+
+      <form [formGroup]="vehiculoForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Marca</label>
+            <input type="text" class="form-control" formControlName="marca">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Modelo</label>
+            <input type="text" class="form-control" formControlName="modelo">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Año</label>
+            <input type="number" class="form-control" formControlName="anio">
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Color</label>
+            <input type="text" class="form-control" formControlName="color">
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Placa</label>
+            <input type="text" class="form-control" formControlName="placa">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Precio Diario (S/)</label>
+            <input type="number" class="form-control" formControlName="precioDiario">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Estado</label>
+            <select class="form-select" formControlName="estado">
+              <option value="DISPONIBLE">Disponible</option>
+              <option value="ALQUILADO">Alquilado</option>
+              <option value="MANTENIMIENTO">Mantenimiento</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Asientos</label>
+            <input type="number" class="form-control" formControlName="asientos">
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Combustible</label>
+            <select class="form-select" formControlName="combustible">
+              <option value="GASOLINA">Gasolina</option>
+              <option value="DIESEL">Diesel</option>
+              <option value="ELECTRICO">Eléctrico</option>
+              <option value="HIBRIDO">Híbrido</option>
+            </select>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Transmisión</label>
+            <select class="form-select" formControlName="transmision">
+              <option value="MANUAL">Manual</option>
+              <option value="AUTOMATICA">Automática</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Tipo de Vehículo</label>
+          <select class="form-select" formControlName="tipoVehiculo">
+            <option value="SEDAN">Sedán</option>
+            <option value="SUV">SUV</option>
+            <option value="PICKUP">Pickup</option>
+            <option value="DEPORTIVO">Deportivo</option>
+            <option value="VAN">Van</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">URL Imagen</label>
+          <input type="text" class="form-control" formControlName="imagen" placeholder="https://ejemplo.com/auto.jpg">
+        </div>
+
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-success" [disabled]="vehiculoForm.invalid">Guardar Vehículo</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

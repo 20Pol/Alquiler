@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagos - RentDrive</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">RentDrive</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="alquileres.html">Alquileres</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="pagos.html">Pagos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="devoluciones.html">Devoluciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="alquiler-form.html">Nuevo Alquiler</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2><i class="fas fa-money-bill-wave me-2"></i> Gestión de Pagos</h2>
+        <p class="text-muted">Registra y gestiona los pagos de los alquileres.</p>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <form id="form-pago">
+                    <h5><i class="fas fa-receipt me-2"></i> Registrar Nuevo Pago</h5>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="id_comprobante" class="form-label">ID Comprobante</label>
+                            <input type="number" class="form-control" id="id_comprobante" placeholder="Ingrese ID del comprobante" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="monto_pago" class="form-label">Monto (S/.)</label>
+                            <input type="number" step="0.01" class="form-control" id="monto_pago" placeholder="Cantidad a pagar" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="metodo_pago" class="form-label">Método de Pago</label>
+                            <select class="form-select" id="metodo_pago" required>
+                                <option selected disabled>Seleccionar...</option>
+                                <option value="EFECTIVO">Efectivo</option>
+                                <option value="TARJETA">Tarjeta</option>
+                                <option value="TRANSFERENCIA">Transferencia</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="referencia" class="form-label">Referencia (Opcional)</label>
+                            <input type="text" class="form-control" id="referencia" placeholder="Número de transacción, voucher, etc.">
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check-circle me-2"></i> Registrar Pago
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h5><i class="fas fa-history me-2"></i> Historial de Pagos</h5>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID Pago</th>
+                            <th>Comprobante</th>
+                            <th>Cliente</th>
+                            <th>Monto</th>
+                            <th>Método</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#P001</td>
+                            <td>#C1001</td>
+                            <td>Juan Pérez</td>
+                            <td>S/ 450.00</td>
+                            <td><span class="badge bg-success">Efectivo</span></td>
+                            <td>15/10/2025 14:35</td>
+                            <td><span class="badge bg-success">Completado</span></td>
+                            <td><button class="btn btn-sm btn-info"><i class="fas fa-print"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>#P002</td>
+                            <td>#C1002</td>
+                            <td>María López</td>
+                            <td>S/ 320.00</td>
+                            <td><span class="badge bg-primary">Tarjeta</span></td>
+                            <td>14/10/2025 18:20</td>
+                            <td><span class="badge bg-success">Completado</span></td>
+                            <td><button class="btn btn-sm btn-info"><i class="fas fa-print"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>#P003</td>
+                            <td>#C1003</td>
+                            <td>Carlos Ruiz</td>
+                            <td>S/ 140.00</td>
+                            <td><span class="badge bg-warning">Transferencia</span></td>
+                            <td>15/10/2025 09:15</td>
+                            <td><span class="badge bg-warning">Pendiente</span></td>
+                            <td><button class="btn btn-sm btn-info"><i class="fas fa-print"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

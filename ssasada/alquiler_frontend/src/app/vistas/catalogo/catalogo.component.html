@@ -1,0 +1,119 @@
+<body>
+
+<app-navbar></app-navbar>
+
+<!-- CONTENEDOR PRINCIPAL -->
+<div class="container my-5"
+     style="min-height: 80vh;
+            padding: 30px;
+            background: rgb(0, 0, 0);
+            backdrop-filter: blur(4px);
+            border-radius: 20px;">
+
+  <h2 class="catalog-title-underline" style="text-align:center">
+    Catálogo de Vehículos
+  </h2>
+
+  <!-- LOADING -->
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <!-- ERROR -->
+  <div *ngIf="error" class="alert alert-danger text-center">
+    {{ error }}
+  </div>
+
+  <!-- FILTROS -->
+  <form *ngIf="!loading && !error"
+        (ngSubmit)="filtrar()"
+        class="mb-5 p-3 border rounded bg-light shadow-sm">
+
+    <div class="row g-3">
+      <!-- Marca -->
+      <div class="col-md-3">
+        <label class="form-label fw-bold">Marca</label>
+        <select class="form-select" [(ngModel)]="filtro.marca" name="marca">
+          <option value="">Todas</option>
+          <option *ngFor="let m of marcas" [value]="m">{{ m }}</option>
+        </select>
+      </div>
+
+      <!-- Tipo -->
+      <div class="col-md-2">
+        <label class="form-label fw-bold">Tipo</label>
+        <select class="form-select" [(ngModel)]="filtro.tipoVehiculo" name="tipoVehiculo">
+          <option value="">Todos</option>
+          <option *ngFor="let t of tipos" [value]="t">{{ t }}</option>
+        </select>
+      </div>
+
+      <!-- Año -->
+      <div class="col-md-2">
+        <label class="form-label fw-bold">Año</label>
+        <select class="form-select" [(ngModel)]="filtro.anio" name="anio">
+          <option value="">Todos</option>
+          <option *ngFor="let a of anios" [value]="a">{{ a }}</option>
+        </select>
+      </div>
+
+      <!-- Precio Máximo -->
+      <div class="col-md-3">
+        <label class="form-label fw-bold">Precio máximo</label>
+        <input type="number" class="form-control"
+               [(ngModel)]="filtro.precioMax"
+               name="precioMax"
+               placeholder="S/">
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="text-end mt-3">
+      <button type="submit" class="btn btn-primary me-2">Filtrar</button>
+      <button type="button" class="btn btn-secondary" (click)="limpiar()">Limpiar</button>
+    </div>
+  </form>
+
+  <!-- RESULTADOS -->
+  <div class="row g-4" *ngIf="!loading && !error">
+    <div class="col-md-4 mb-4" *ngFor="let vehiculo of vehiculosFiltrados">
+      <div class="card h-100">
+        <img [src]="vehiculo.imagenUrl || 'https://via.placeholder.com/300x200?text=Sin+Imagen'"
+             class="card-img-top"
+             alt="{{ vehiculo.marca }} {{ vehiculo.modelo }}">
+
+        <div class="card-body">
+          <h5 class="card-title">{{ vehiculo.marca }} {{ vehiculo.modelo }}</h5>
+
+          <p class="card-text">
+            <span class="badge bg-secondary me-1">{{ vehiculo.anio }}</span>
+            <span class="badge bg-info text-dark me-1">{{ vehiculo.transmision }}</span>
+            <span class="badge bg-warning text-dark">{{ vehiculo.combustible }}</span>
+          </p>
+
+          <p class="card-text text-muted">
+            {{ vehiculo.tipoVehiculo }} - {{ vehiculo.asientos }} Asientos
+          </p>
+
+          <h4 class="text-primary">
+            S/ {{ vehiculo.precioDiario }}
+            <small class="text-muted fs-6">/ día</small>
+          </h4>
+        </div>
+
+        <div class="card-footer bg-white text-end">
+          <a [routerLink]="['/catalogo', vehiculo.idVehiculo]"
+             class="btn btn-primary btn-sm">Ver detalles</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+  <p class="mb-0">&copy; 2025 RentDrive. Todos los derechos reservados.</p>
+</footer>
+</body>

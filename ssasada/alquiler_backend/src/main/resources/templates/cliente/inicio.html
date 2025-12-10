@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RentDrive | Alquiler de Vehículos</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="css/inicio.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">RentDrive</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#vehiculos">Vehículos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#footer">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main>
+
+    <!-- 🟢 SECCIÓN 1: INICIO -->
+    <section id="inicio" class="section hero">
+      <div class="hero-content text-center">
+        <h1>Alquila tu vehículo ideal con <span class="text-primary">RentDrive</span></h1>
+        <p>Explora nuestra amplia flota y conduce con seguridad, comodidad y confianza.</p>
+        <a href="/auth/registro" class="btn btn-primary btn-lg">Regístrate Ahora</a>
+      </div>
+    </section>
+
+    <!-- 🟡 SECCIÓN 2: VEHÍCULOS DESTACADOS -->
+    <section id="vehiculos" class="section">
+      <div class="container">
+        <h2 class="section-title">Vehículos Destacados</h2>
+        <div class="row">
+          <div class="col-md-3 mb-4" >
+            <div class="card">
+              <img src="https://cdn.pixabay.com/photo/2017/01/06/19/15/vehicle-1957037_1280.jpg" class="card-img-top" alt="Auto compacto">
+              <div class="card-body text-center">
+                <h5 class="card-title">Auto Compacto</h5>
+                <p class="card-text">Desde S/120 por día</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img src="https://cdn.pixabay.com/photo/2018/03/13/13/47/mercedes-3229063_1280.jpg" class="card-img-top" alt="Sedán">
+              <div class="card-body text-center">
+                <h5 class="card-title">Sedán Ejecutivo</h5>
+                <p class="card-text">Desde S/180 por día</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img src="https://cdn.pixabay.com/photo/2016/03/27/21/16/suv-1283871_1280.jpg" class="card-img-top" alt="SUV">
+              <div class="card-body text-center">
+                <h5 class="card-title">SUV Familiar</h5>
+                <p class="card-text">Desde S/220 por día</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img src="https://cdn.pixabay.com/photo/2014/07/10/11/01/truck-389633_1280.jpg" class="card-img-top" alt="Camioneta">
+              <div class="card-body text-center">
+                <h5 class="card-title">Camioneta 4x4</h5>
+                <p class="card-text">Desde S/250 por día</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔵 SECCIÓN 3: SERVICIOS -->
+    <section id="servicios" class="section">
+      <div class="container">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card text-center p-3">
+              <img src="https://cdn-icons-png.flaticon.com/512/743/743131.png" width="80" class="mx-auto" alt="Auto">
+              <div class="card-body">
+                <h5 class="card-title">Alquiler por Día</h5>
+                <p class="card-text">Renta el vehículo que prefieras por días con tarifas flexibles.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card text-center p-3">
+              <img src="https://cdn-icons-png.flaticon.com/512/1513/1513496.png" width="80" class="mx-auto" alt="Auto">
+              <div class="card-body">
+                <h5 class="card-title">Alquiler Mensual</h5>
+                <p class="card-text">Ideal para empresas o clientes que necesitan movilidad prolongada.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card text-center p-3">
+              <img src="https://cdn-icons-png.flaticon.com/512/3202/3202926.png" width="80" class="mx-auto" alt="Auto">
+              <div class="card-body">
+                <h5 class="card-title">Entrega a Domicilio</h5>
+                <p class="card-text">Recibe y devuelve el vehículo donde más te convenga.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ⚫ FOOTER corto -->
+  <footer id="footer" class="text-center py-3 bg-dark text-light">
+    <p>© 2025 RentDrive. Todos los derechos reservados.</p>
+    <p><a href="#" class="text-primary">Términos y Condiciones</a> | <a href="#" class="text-primary">Política de Privacidad</a></p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

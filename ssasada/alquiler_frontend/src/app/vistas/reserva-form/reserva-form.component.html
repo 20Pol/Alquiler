@@ -1,0 +1,138 @@
+<body>
+  <app-navbar></app-navbar>
+
+
+
+  <div class="container"
+    style="margin-top: 10px; max-width: 700px; background-color: white; padding: 30px; border-radius: 20px;">
+
+    <button class="btn btn-secondary mb-3" routerLink="/catalogo">
+      <i class="fa-solid fa-arrow-left"></i> Volver
+    </button>
+
+    <h2 class="mb-3">Reserva de Vehículo</h2>
+    <hr>
+
+    <!-- Datos del vehículo -->
+    <div class="card mb-4 shadow-sm">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img [src]="vehiculo?.imagenUrl" class="img-fluid rounded-start" style="height: 100%; object-fit: cover;">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ vehiculo?.marca }} {{ vehiculo?.modelo }}</h5>
+            <p class="card-text">S/ {{ vehiculo?.precioDiario }} por día</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulario -->
+    <form (ngSubmit)="crearReserva()">
+
+      <div class="mb-3">
+        <label class="form-label"><i class="fa-solid fa-calendar-day"></i> Fecha inicio</label>
+        <input type="date" class="form-control" [(ngModel)]="fechaInicio" name="fechaInicio" (change)="calcularCosto()"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label"><i class="fa-solid fa-calendar-check"></i> Fecha fin</label>
+        <input type="date" class="form-control" [(ngModel)]="fechaFin" name="fechaFin" (change)="calcularCosto()"
+          required>
+      </div>
+
+      <!-- Validación de fechas -->
+      <div *ngIf="errorFecha" class="alert alert-danger">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        La fecha de fin debe ser posterior a la fecha de inicio.
+      </div>
+
+      <!-- Método de entrega -->
+      <div class="mb-3">
+        <label class="form-label"><i class="fa-solid fa-car-side"></i> Método de entrega</label>
+
+        <select class="form-select" [(ngModel)]="metodoEntrega" name="metodoEntrega">
+          <option value="tienda">Recojo en tienda</option>
+          <option value="domicilio">Entrega a domicilio</option>
+        </select>
+      </div>
+
+      <!-- Dirección (solo si domicilio) -->
+      <div class="mb-3" *ngIf="metodoEntrega === 'domicilio'">
+        <label class="form-label"><i class="fa-solid fa-location-dot"></i> Dirección de entrega</label>
+        <input type="text" class="form-control" [(ngModel)]="direccion" name="direccion">
+      </div>
+
+      <!-- Resumen Completo -->
+      <div *ngIf="costoTotal !== null && !errorFecha" class="alert alert-info mt-3">
+
+        <h5 class="mb-3">
+          <i class="fa-solid fa-receipt"></i> Resumen de la reserva
+        </h5>
+
+        <p><strong>Vehículo:</strong> {{ vehiculo?.marca }} {{ vehiculo?.modelo }}</p>
+
+        <p><strong>Fecha de inicio:</strong> {{ fechaInicio }}</p>
+        <p><strong>Fecha de fin:</strong> {{ fechaFin }}</p>
+
+        <hr>
+
+        <p><strong>Días alquilados:</strong> {{ dias }}</p>
+        <p><strong>Precio por día:</strong> S/ {{ vehiculo?.precioDiario }}</p>
+
+        <p *ngIf="metodoEntrega === 'tienda'">
+          <strong>Entrega:</strong> Recojo en tienda
+        </p>
+
+        <p *ngIf="metodoEntrega === 'envio'">
+          <strong>Entrega:</strong> Envío a domicilio
+          <br><strong>Dirección:</strong> {{ direccion }}
+        </p>
+
+        <hr>
+
+        <h5 class="fw-bold">
+          Total a pagar: S/ {{ costoTotal }}
+        </h5>
+
+      </div>
+
+
+      <!-- BOTÓN confirma modal -->
+      <button type="button" class="btn btn-success w-100" [disabled]="errorFecha" (click)="confirmarReserva()">
+
+        <i class="fa-solid fa-check-circle"></i> Confirmar Reserva
+      </button>
+
+    </form>
+
+
+    <!-- MODAL ÉXITO -->
+
+  </div>
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white text-center py-3 mt-5 w-100">
+    <p class="mb-0">&copy; 2025 RentDrive. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+
+<div class="modal fade" id="successModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4 shadow-lg border-0">
+
+      <div class="modal-body">
+        <i class="fa-solid fa-circle-check text-success" style="font-size: 60px;"></i>
+        <h3 class="mt-3">¡Reserva realizada!</h3>
+        <p>Tu reserva se registró correctamente.</p>
+
+        <button class="btn btn-primary w-100 mt-3" (click)="cerrarYVolver()">
+          Aceptar
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

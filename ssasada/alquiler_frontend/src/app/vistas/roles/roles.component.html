@@ -1,0 +1,51 @@
+<div class="container">
+    <h1 class="text-center mb-4">👤 Gestión de Roles y usuario</h1>
+
+    <p class="text-center mb-4">
+        Asigna o actualiza los roles de los usuarios registrados en el sistema.
+    </p>
+
+    <table class="table table-hover table-bordered align-middle text-center">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Rol Actual</th>
+                <th>Estado</th>
+                <th>Asignar Nuevo Rol</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let usuario of listaUsuarios">
+                <td>{{ usuario.idUsuario }}</td>
+                <td>{{ usuario.username }}</td>
+                <td>
+                    <span class="badge" [ngClass]="{
+                        'bg-danger': usuario.rol?.nombreRol === 'ADMIN',
+                        'bg-primary': usuario.rol?.nombreRol === 'EMPLEADO',
+                        'bg-secondary': usuario.rol?.nombreRol === 'CLIENTE'
+                    }">
+                        {{ usuario.rol?.nombreRol }}
+                    </span>
+                </td>
+                <td>{{ usuario.estado }}</td>
+                <td>
+                    <div class="d-flex justify-content-center align-items-center gap-2">
+                        <select class="form-select form-select-sm" style="width: 150px;" [(ngModel)]="usuario.nuevoRol">
+                            <option *ngFor="let rol of listaRoles" [value]="rol">{{ rol }}</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-sm me-2" (click)="asignarRol(usuario)">Guardar</button>
+                    <button *ngIf="usuario.rol?.nombreRol === 'CLIENTE'" class="btn btn-danger btn-sm"
+                        (click)="eliminarUsuario(usuario)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

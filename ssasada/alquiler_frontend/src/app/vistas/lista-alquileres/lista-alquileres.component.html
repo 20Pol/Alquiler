@@ -1,0 +1,92 @@
+<div class="container mt-4">
+
+  <!-- Título -->
+  <div class="d-flex align-items-center mb-3">
+    <i class="bi bi-journal-text me-2" style="font-size: 1.6rem;"></i>
+    <h1>Reservas</h1>
+  </div>
+  <p>Gestión y visualización de todas las reservas registradas.</p>
+
+  <!-- Filtro -->
+  <div class="d-flex flex-wrap justify-content-start align-items-center mb-3">
+    <select class="form-select me-2" style="width: 180px;"
+            [(ngModel)]="filtroEstado" (change)="filtrarReservas()">
+      <option value="">Todos los estados</option>
+      <option value="Pendiente">Pendiente</option>
+      <option value="Confirmada">Confirmada</option>
+      <option value="Completada">Completada</option>
+    </select>
+  </div>
+
+  <!-- VISTA EN TARJETAS (móviles) -->
+  <div class="row g-3 d-md-none">
+    <div class="col-12" *ngFor="let r of reservasFiltradas">
+      <div class="card shadow-sm">
+        <img *ngIf="r.vehiculo?.imagenUrl" [src]="r.vehiculo?.imagenUrl" class="card-img-top" alt="Vehiculo">
+        <div class="card-body">
+          <h5 class="card-title">{{ r.cliente?.nombre }} {{ r.cliente?.apellido }}</h5>
+          <p class="card-text mb-1">
+            <strong>Vehículo:</strong> {{ r.vehiculo?.marca }} {{ r.vehiculo?.modelo }}<br>
+            <strong>Fechas:</strong> {{ r.fechaInicio | date:'shortDate' }} - {{ r.fechaFin | date:'shortDate' }}<br>
+            <strong>Entrega:</strong> {{ r.direccionEntrega || 'Tienda' }} ({{ r.metodoEntrega }})<br>
+            <strong>Costo:</strong> S/ {{ r.costoEstimado }}<br>
+          </p>
+          <div class="d-flex gap-2 mt-2">
+            <select [(ngModel)]="r.estado" class="form-select form-select-sm" style="width: 150px;">
+              <option value="Pendiente">Pendiente</option>
+              <option value="Confirmada">Confirmada</option>
+              <option value="Completada">Completada</option>
+            </select>
+            <button class="btn btn-sm btn-primary" (click)="actualizarEstado(r)">
+              <i class="bi bi-arrow-repeat"></i> Actualizar
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="eliminarReserva(r)">
+              <i class="bi bi-trash"></i> Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VISTA EN ACCORDION (desktop) -->
+  <div class="accordion d-none d-md-block" id="reservasAccordion">
+    <div class="accordion-item" *ngFor="let r of reservasFiltradas; let i = index">
+      <h2 class="accordion-header" id="heading{{i}}">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#collapse' + i" aria-expanded="false"
+                [attr.aria-controls]="'collapse' + i">
+          Reserva #{{ r.idReserva }} - {{ r.cliente?.nombre }} {{ r.cliente?.apellido }} - {{ r.vehiculo?.marca }} {{ r.vehiculo?.modelo }}
+        </button>
+      </h2>
+      <div [id]="'collapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i" data-bs-parent="#reservasAccordion">
+        <div class="accordion-body">
+          <div class="row">
+            <div class="col-md-4">
+              <img *ngIf="r.vehiculo?.imagenUrl" [src]="r.vehiculo?.imagenUrl" class="img-fluid rounded" alt="Vehiculo">
+            </div>
+            <div class="col-md-8">
+              <p><strong>Fechas:</strong> {{ r.fechaInicio | date:'shortDate' }} - {{ r.fechaFin | date:'shortDate' }}</p>
+              <p><strong>Entrega:</strong> {{ r.direccionEntrega || 'Tienda' }} ({{ r.metodoEntrega }})</p>
+              <p><strong>Costo:</strong> S/ {{ r.costoEstimado }}</p>
+              <div class="d-flex gap-2 mt-2">
+                <select [(ngModel)]="r.estado" class="form-select form-select-sm" style="width: 150px;">
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="Confirmada">Confirmada</option>
+                  <option value="Completada">Completada</option>
+                </select>
+                <button class="btn btn-sm btn-primary" (click)="actualizarEstado(r)">
+                  <i class="bi bi-arrow-repeat"></i> Actualizar
+                </button>
+                <button class="btn btn-sm btn-danger" (click)="eliminarReserva(r)">
+                  <i class="bi bi-trash"></i> Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

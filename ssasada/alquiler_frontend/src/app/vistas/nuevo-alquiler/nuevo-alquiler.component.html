@@ -1,0 +1,63 @@
+<div class="container mt-4">
+  <div class="d-flex align-items-center mb-3">
+    <i class="bi bi-plus-circle me-2" style="font-size: 1.5rem;"></i>
+    <h1>Nuevo Alquiler</h1>
+  </div>
+  <p>Complete el formulario para registrar un nuevo alquiler.</p>
+
+  <div class="card p-4">
+    <!-- Información del Cliente -->
+    <h5><i class="bi bi-person me-2"></i>Información del Cliente</h5>
+    <div class="row g-3 mb-4">
+      <div class="col-md-6">
+        <label for="clientId" class="form-label">ID Cliente</label>
+        <input type="text" class="form-control" id="clientId" placeholder="Ingrese ID del cliente">
+      </div>
+      <div class="col-md-6">
+        <label for="clientName" class="form-label">Nombre Completo</label>
+        <input type="text" class="form-control" id="clientName" placeholder="Nombre y apellido">
+      </div>
+    </div>
+
+    <!-- Información del Vehículo -->
+    <h5><i class="bi bi-car me-2"></i>Información del Vehículo</h5>
+    <div class="row g-3 mb-4">
+      <div class="col-md-6">
+        <label for="vehicleId" class="form-label">ID Vehículo</label>
+        <input type="text" class="form-control" id="vehicleId" placeholder="Ingrese ID del vehículo">
+      </div>
+      <div class="col-md-6">
+        <label for="plate" class="form-label">Placa</label>
+        <input type="text" class="form-control" id="plate" placeholder="Placa del vehículo">
+      </div>
+    </div>
+
+    <!-- Fechas y Costos -->
+    <h5><i class="bi bi-calendar me-2"></i>Fechas y Costos</h5>
+    <div class="row g-3 mb-4">
+      <div class="col-md-6">
+        <label for="startDate" class="form-label">Fecha Inicio</label>
+        <input type="date" class="form-control" id="startDate">
+      </div>
+      <div class="col-md-6">
+        <label for="endDate" class="form-label">Fecha Fin</label>
+        <input type="date" class="form-control" id="endDate">
+      </div>
+    </div>
+    <div class="row g-3 mb-4">
+      <div class="col-md-6">
+        <label for="initialKm" class="form-label">Kilometraje Inicial</label>
+        <input type="number" class="form-control" id="initialKm" placeholder="Kilómetros al inicio">
+      </div>
+      <div class="col-md-6">
+        <label for="dailyPrice" class="form-label">Precio Diario (S/.)</label>
+        <input type="number" class="form-control" id="dailyPrice" placeholder="Precio por día">
+      </div>
+    </div>
+
+    <!-- Botón Guardar -->
+    <button type="submit" class="btn btn-primary w-100">
+      <i class="bi bi-save me-2"></i>Guardar Alquiler
+    </button>
+  </div>
+</div>

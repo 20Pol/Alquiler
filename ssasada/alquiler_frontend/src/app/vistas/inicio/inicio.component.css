@@ -1,0 +1,414 @@
+/* === RESET GENERAL === */
+
+.text-primary {
+  color: #004c9c !important; /* dorado premium, o el color que quieras */
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #041022;
+  color: #060553;
+  scroll-behavior: smooth;
+  /* ❌ NO USAR overflow hidden con fullPage */
+  overflow: visible;
+}
+ 
+/* === FULLPAGE SECTIONS === */
+.section {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 70px;
+  position: relative;
+}
+
+/* === NAVBAR === */
+.navbar {
+  background: rgba(0, 0, 0, 0.6) !important;
+  padding: 1rem 1.6rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  backdrop-filter: blur(6px);
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  top: 0;
+}
+
+/* Navbar links */
+.nav-link {
+  color: #dcdcdc !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #004c9c !important;
+}
+
+/* === HERO SECTION === */
+.hero {
+  background: url('/images/hero-bg.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+  animation: fadeSlideDown 1.2s ease-out;
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* Botón */
+.btn-primary {
+  background: #004c9c;
+  border: none;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #0d2947;
+  transform: scale(1.05);
+}
+
+/* === TITULOS === */
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-size: 2.3rem;
+  color: #1c1f23;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: #0d2947;
+  display: block;
+  margin: 12px auto 0 auto;
+  border-radius: 2px;
+  animation: growLine 1s ease-out forwards;
+}
+
+@keyframes growLine {
+  from { width: 0; opacity: 0; }
+  to { width: 80px; opacity: 1; }
+}
+
+/* === VEHICULOS ===
+*/
+.section#vehiculos {
+  background: rgb(0, 0, 0);
+}
+
+
+#vehiculos {
+  padding: 0;
+  margin: 0;
+}
+
+.vehicles-wrapper {
+  display: flex;
+  min-height: 200vh;
+  padding: 80px 0;
+}
+
+.vehicles-left {
+  flex: 1;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.vehicles-left-content {
+  text-align: center;
+  max-width: 350px;
+}
+
+.vehicles-left h2 {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 15px;
+  color: #004c9c;
+  letter-spacing: -1px;
+}
+
+/* Slogan elegante */
+.slogan {
+  font-size: 1.2rem;
+  color: #004c9c;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+/* Iconos */
+.vehicles-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 55px;
+}
+
+.icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.8;
+  transition: 0.3s ease;
+}
+
+.icon-box:hover {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+.icon-box i {
+  font-size: 2rem;
+  color: #1b263b;
+  margin-bottom: 6px;
+}
+
+.icon-box span {
+  font-size: 0.95rem;
+  color: #1b263b;
+  font-weight: 600;
+}
+
+.vehicles-right {
+  flex: 2;
+}
+
+.vehicle-item {
+  min-height: 100vh; /* Cada vehículo ocupa una pantalla */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+  opacity: 0.3;
+  transition: opacity 0.5s ease;
+}
+
+.vehicle-item img {
+  width: 90%;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.vehicle-item.active {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+
+/* SERVICOS */
+#servicios {
+  position: relative;
+  padding: 90px 0;
+  background: radial-gradient(circle at 20% 20%, rgba(7, 97, 170, 0.35), transparent 60%),
+              radial-gradient(circle at 80% 60%, rgba(5, 49, 114, 0.3), transparent 55%),
+              #00040a;
+  backdrop-filter: blur(6px);
+}
+
+/* Título */
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* === SCROLL HORIZONTAL === */
+.services-scroll {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  /* Ocultar scroll sin romper funcionalidad */
+  scrollbar-width: none;
+}
+.services-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* === TARJETAS === */
+.service-item {
+  min-width: 260px;
+  max-width: 260px;
+
+  flex-shrink: 0;
+
+  scroll-snap-align: center;
+
+  background: rgba(255, 255, 255, 0.178);
+  padding: 30px 20px;
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* ICONO */
+.icon-wrapper {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: #e8eef5c4;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 15px auto;
+}
+
+.icon-wrapper i {
+  font-size: 32px;
+  color: #0d6efd;
+}
+
+/* Textos */
+.service-item h5 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #041222;
+}
+
+.service-item p {
+  color: #a9bad1;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.3rem; }
+  .hero p { font-size: 1rem; }
+  .section-title { font-size: 1.8rem; }
+}
+
+/* === FOOTER FULLPAGE === */
+.footer-full {
+  height: 100%;
+  width: 100%;
+  padding: 50px 20px;
+  background: linear-gradient(180deg, #1c1f23, #111315);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.footer-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+/* Datos de contacto */
+.contact-info p {
+  margin: 6px 0;
+  font-size: 1.2rem;
+}
+
+/* Redes sociales limpio */
+.social-icons {
+  margin: 25px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 0 12px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a img {
+  width: 45px;
+  height: 45px;
+  display: block;
+  /* Eliminamos filtros que alteran colores del PNG */
+  filter: none;
+  background: transparent;
+  border-radius: 50%; /* opcional: si quieres borde redondeado */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icons a img:hover {
+  transform: scale(1.2);
+  opacity: 0.85; /* efecto sutil en hover */
+}
+
+
+/* Copyright */
+.footer-copy {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.footer-link {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+/* Fondo para Contacto */
+.section#contacto {
+  background: url('/images/bg-contacto.jpg') center/cover no-repeat;
+}

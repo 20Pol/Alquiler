@@ -1,0 +1,114 @@
+/* === RESET GENERAL === */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  scroll-behavior: smooth;
+
+  /* Scroll por secciones */
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+
+/* === NAVBAR === */
+.navbar {
+  background-color: #212529 !important;
+  padding: 0.8rem 1.5rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+/* === SECCIONES GENERALES === */
+.section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+  padding-top: 56px; /* espacio para navbar fija */
+}
+
+/* === HERO === */
+.hero {
+  background: url('../img/hero-bg.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* === VEHÍCULOS / SERVICIOS === */
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #212529;
+}
+
+/* === TARJETAS === */
+.card {
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* === FOOTER === */
+footer {
+  background-color: #212529;
+  color: #f8f9fa;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.95rem;
+  scroll-snap-align: none; /* no bloquea el scroll */
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - RentDrive </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0b3d91, #14213d);
+            color: #e0e0e0;
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: #14213d;
+            padding: 2.5rem;
+            border-radius: 15px;
+            width: 380px;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+        }
+
+        h1, h2 {
+            color: #ffffff;
+        }
+
+        .btn-primary {
+            background-color: #fca311;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffb703;
+        }
+
+        .btn-secondary {
+            background-color: #333;
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #444;
+        }
+
+        .alert {
+            padding: 0.7rem;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="text-center mb-4">
+        <h1>🚗 RentDrive</h1>
+        <p class="lead">Sistema de Gestión de Alquiler de Vehículos</p>
+    </div>
+
+    <div class="form-container">
+        <h2 class="text-center mb-4">Iniciar Sesión</h2>
+
+        <!-- ✅ Mensaje de error si las credenciales no son válidas -->
+        <div th:if="${error}" class="alert alert-danger text-center">
+            Usuario o contraseña incorrectos. Inténtalo nuevamente.
+        </div>
+
+        <!-- ✅ Mensaje si la cuenta está inactiva -->
+        <div th:if="${inactivo}" class="alert alert-warning text-center">
+            Tu cuenta está inactiva. Contacta con el administrador.
+        </div>
+
+        <form th:action="@{/login}" method="post" th:object="${usuario}">
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="username" placeholder="Ingrese su usuario" th:field="*{username}" required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña" th:field="*{password}" required>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                <a href="/registro" class="btn btn-secondary">Registrarse</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="footer text-center mt-4">
+        <p>© 2025 RentDrive. Todos los derechos reservados.</p>
+    </div>
+
+</body>
+</html>
+>

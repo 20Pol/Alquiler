@@ -1,0 +1,74 @@
+/* Hace que 100% de altura funcione */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fondo completo sin cortes ni saltos */
+body {
+    background:
+        linear-gradient(135deg, rgba(11,61,145,0.7), rgba(20,33,61,0.85)),
+        url('https://editorial.pxcrush.net/carsales/general/editorial/160217_Subaru_WRX_STI_VS_Mitsubishi_Evoloution_X_20.jpg?width=1024&height=682');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    font-family: 'Segoe UI', sans-serif;
+    color: #e0e0e0;
+}
+
+/* Contenedor que se adapta al contenido sin romper el fondo */
+.page-container {
+    min-height: 100vh;   /* Mejor que height */
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 3rem 1rem;
+}
+
+/* Texto de bienvenida */
+.welcome {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Caja del formulario */
+.form-container {
+    width: 100%;
+    max-width: 600px;
+
+    background-color: rgba(20, 33, 61, 0.90); /* más elegante */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(255,255,255,0.12);
+    backdrop-filter: blur(4px);
+}
+
+/* Botones */
+.btn-primary {
+    background-color: #fca311;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #ffb703;
+}
+
+.btn-secondary {
+    background-color: #333;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #444;
+}
+
+/* Etiquetas */
+label {
+    font-weight: 500;
+}
