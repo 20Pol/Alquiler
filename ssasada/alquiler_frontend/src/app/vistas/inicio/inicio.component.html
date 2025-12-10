@@ -1,0 +1,189 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+  <!-- LOGO + NOMBRE -->
+  <a class="navbar-brand d-flex align-items-center" routerLink="/">
+    <i class="fas fa-car-side me-2"></i>
+    <span class="brand-title">RentDrive</span>
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a class="nav-link separator">|</a>
+      </li>
+    </ul>
+
+    <!-- OPCIONES DERECHA -->
+    <ul class="navbar-nav ms-auto">
+
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/catalogo">
+          <i class="fas fa-th-list me-2"></i> Catálogo
+        </a>
+      </li>
+
+ <li class="nav-item" *ngIf="authService.hasRole('ADMIN')">
+  <a class="nav-link d-flex align-items-center" routerLink="/dashboard">
+    <i class="fas fa-chart-line me-2"></i> Dashboard
+  </a>
+</li>
+
+      <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+        <a class="nav-link d-flex align-items-center" routerLink="/login">
+          <i class="fas fa-sign-in-alt me-2"></i> Iniciar Sesión
+        </a>
+      </li>
+
+      <li class="nav-item" *ngIf="authService.isLoggedIn()">
+        <a class="nav-link" (click)="logout()" style="cursor:pointer">Cerrar Sesión</a>
+      </li>
+
+      <li class="nav-item" *ngIf="authService.isLoggedIn()">
+        <a class="nav-link d-flex align-items-center" routerLink="/perfil">
+          <i class="fas fa-user-circle me-2"></i> Perfil
+        </a>
+      </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+
+<!-- CONTENEDOR FULLPAGE -->
+<div id="fullpage">
+
+  <!-- SECCIÓN 1 -->
+  <div class="section hero" id="inicio">
+    <div class="hero-content text-center">
+
+      <h1 class="hero-title">
+        Alquila tu vehículo ideal con
+        <span class="text-primary">RentDrive</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Explora nuestra amplia flota y conduce con seguridad, comodidad y confianza.
+      </p>
+
+      <a routerLink="/registro" class="btn btn-primary btn-hero">
+        <i class="fas fa-user-plus me-2"></i>
+        Regístrate Ahora
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- SECCIÓN VEHÍCULOS -->
+  <div class="section" id="vehiculos">
+    <div class="vehicles-wrapper">
+
+      <!-- LADO IZQUIERDO: TÍTULO FIJO -->
+      <div class="vehicles-left">
+        <div class="vehicles-left-content">
+
+          <h2>Vehículos Destacados</h2>
+
+          <p class="slogan">
+            Rendimiento, estilo y excelencia en cada camino.
+          </p>
+
+          <div class="vehicles-icons">
+            <div class="icon-box">
+              <i class="fa-solid fa-gauge-high"></i>
+              <span>Rendimiento</span>
+            </div>
+            <div class="icon-box">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Seguridad</span>
+            </div>
+            <div class="icon-box">
+              <i class="fa-solid fa-crown"></i>
+              <span>Premium</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- LADO DERECHO: VEHÍCULOS QUE CAMBIAN AL SCROLLEAR -->
+      <div class="vehicles-right">
+        <div class="vehicle-item" *ngFor="let auto of vehiculosDestacados; let i = index" [id]="'vehiculo-' + i">
+          <img [src]="auto.imagen">
+          <h3>{{ auto.nombre }}</h3>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- SECCIÓN SERVICIOS -->
+  <div class="section" id="servicios">
+    <div class="container">
+
+      <h2 class="section-title text-center my-4">
+        <i class="fa-solid fa-screwdriver-wrench me-2"></i>
+        Nuestros <span class="text-primary">Servicios</span>
+      </h2>
+
+
+
+      <div class="services-scroll">
+
+        <div class="service-item" *ngFor="let s of servicios">
+          <div class="icon-wrapper">
+            <i class="fa-solid" [ngClass]="s.icono"></i>
+          </div>
+          <h5>{{ s.titulo }}</h5>
+          <p>{{ s.descripcion }}</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <!-- SECCIÓN CONTACTO / FOOTER -->
+  <div class="section" id="contacto">
+    <div class="footer-full">
+
+      <h2 class="footer-title">Contáctanos</h2>
+      <p class="footer-subtitle">Siempre listos para ayudarte</p>
+
+      <div class="contact-info">
+        <p><strong>📞 Teléfono:</strong> +51 999 999 999</p>
+        <p><strong>📍 Dirección:</strong> Arequipa, Perú</p>
+        <p><strong>📧 Email:</strong> contacto&#64;rentdrive.com</p>
+      </div>
+
+      <div class="social-icons">
+        <a href="#"><img src="/images/facebook.png"></a>
+        <a href="#"><img src="/images/instagram.png"></a>
+        <a href="#"><img src="/images/whatsapp.png"></a>
+      </div>
+
+      <p class="footer-copy">
+        © 2025 RentDrive. Todos los derechos reservados. <br>
+        <a class="footer-link" href="#">Términos y Condiciones</a> |
+        <a class="footer-link" href="#">Política de Privacidad</a>
+      </p>
+
+    </div>
+  </div>
+
+</div>
